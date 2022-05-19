@@ -1,12 +1,6 @@
-FROM busybox
+FROM docker.io/postgres:<%= image.vars['postgres_version'] %>-alpine<%= image.vars['alpine_version'] %>
 
 <%= snippet('labels', binding) -%>
 
-<%= snippet('docker-entrypoint', binding) -%>
-
-<%= snippet('dockerize', binding) -%>
-
-<%= snippet('tini', binding) -%>
-
-ENTRYPOINT ["/tini", "--", "/docker-entrypoint.sh"]
-CMD [ "init-loop" ]
+RUN apk add --no-cache \
+    tcl
