@@ -9,4 +9,17 @@ vars:
   de_version: '1.5'
   dockerize_version: '0.6.1'
   postgres_version: '14.3'
+  postgres_major: '14'
   alpine_version: '3.15'
+  alpine_tag: 'alpine3.15'
+
+tags:
+  - "<%= tag_join(vars['postgres_version'], 'alpine') %>"
+  - "<%= tag_join(vars['postgres_version'], vars['alpine_tag']) %>"
+  - "<%= tag_join(vars['postgres_major'], 'alpine') %>"
+  - "<%= tag_join(vars['postgres_major'], vars['alpine_tag']) %>"
+  - "<%= vars['postgres_version'] %>"
+  - "<%= vars['postgres_major'] %>"
+  - "<%= tag_join(vars['postgres_version'], build_suffix) %>"
+  - 'alpine'
+  - 'latest'
